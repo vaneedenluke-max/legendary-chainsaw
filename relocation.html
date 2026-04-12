@@ -159,7 +159,11 @@
     <h2>Tell us about<br><em>your move</em></h2>
     <p>A quick conversation is all it takes to get started. We'll ask a few questions and come back with a plan tailored to your situation.</p>
   </div>
-  <form class="exp-form" onsubmit="handleSubmit(event)">
+  <form class="exp-form" name="relocation-enquiry" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="relocation-enquiry" />
+    <input type="hidden" name="_subject" value="New Enquiry - Canterbury Concierge" />
+    <input type="hidden" name="_replyto" value="luke.vaneeden@hotmail.com" />
+    <p style="display:none"><input name="bot-field" /></p>
     <div class="form-row">
       <div class="form-group"><label>Your Name</label><input type="text" placeholder="Jane Smith" /></div>
       <div class="form-group"><label>Email</label><input type="email" placeholder="you@example.com" /></div>
