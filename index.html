@@ -983,7 +983,11 @@
     <div class="section-label" style="margin-bottom:16px;">Get In Touch</div>
     <h2 style="color:var(--cream);margin-bottom:24px;">Let's talk about<br><em>what you need</em></h2>
     <p style="font-size:0.92rem;line-height:1.85;color:#9A9080;margin-bottom:40px;">Whether it's a single request or ongoing lifestyle management, we'd love to hear from you. All enquiries are treated with complete discretion.</p>
-    <form class="contact-form" onsubmit="handleSubmit(event)">
+    <form class="contact-form" name="index-enquiry" method="POST" action="/thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="index-enquiry" />
+    <input type="hidden" name="_subject" value="New Enquiry - Canterbury Concierge" />
+    <input type="hidden" name="_replyto" value="luke.vaneeden@hotmail.com" />
+    <p style="display:none"><input name="bot-field" /></p>
       <div class="form-row">
         <div class="form-group">
           <label>First Name</label>
