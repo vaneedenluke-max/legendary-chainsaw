@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signature Experiences | Canterbury Concierge</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#F4EFE6;--bone:#EAE3D6;--charcoal:#1C1C1C;--stone:#7A7060;--gold:#B49A6A;--gold-light:#D4BC8E;--deep:#0E0E0E;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:24px 60px;background:rgba(14,14,14,0.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(180,154,106,0.12);}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;letter-spacing:0.18em;color:var(--cream);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-back{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);text-decoration:none;transition:color 0.3s;}
+  .nav-back:hover{color:var(--gold);}
+  .nav-cta{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--charcoal);background:var(--gold);padding:10px 22px;transition:background 0.3s;font-weight:500;}
+  .nav-cta:hover{background:var(--gold-light);}
+
+  /* HERO */
+  .hero{min-height:80vh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:url('https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;filter:brightness(0.35) saturate(0.7);}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.95) 0%,rgba(0,0,0,0.1) 70%);}
+  .hero-content{position:relative;z-index:2;padding:0 60px 0;animation:fadeUp 1.2s 0.3s ease both;}
+  .hero-tag{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;display:flex;align-items:center;gap:12px;}
+  .hero-tag::before{content:'';width:32px;height:1px;background:var(--gold);}
+  h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:300;line-height:1.0;color:var(--cream);margin-bottom:24px;}
+  h1 em{font-style:italic;color:var(--gold-light);}
+  .hero-sub{font-size:1rem;line-height:1.85;color:rgba(255,255,255,0.6);max-width:580px;margin-bottom:0;}
+  .cat-nav{position:relative;z-index:2;display:flex;flex-wrap:wrap;border-top:1px solid rgba(180,154,106,0.2);margin-top:40px;}
+  .cat-nav a{font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);text-decoration:none;padding:20px 28px;border-right:1px solid rgba(180,154,106,0.12);transition:all 0.3s;}
+  .cat-nav a:hover{color:var(--gold);background:rgba(180,154,106,0.06);}
+
+  /* SECTIONS */
+  .section{padding:100px 60px;}
+  .section-alt{background:rgba(255,255,255,0.025);}
+  .sec-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;padding-bottom:28px;border-bottom:1px solid rgba(180,154,106,0.12);}
+  .sec-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;line-height:1.15;}
+  h2 em{font-style:italic;color:var(--gold);}
+  .sec-num{font-family:'Cormorant Garamond',serif;font-size:4.5rem;color:rgba(180,154,106,0.07);line-height:1;font-weight:300;}
+
+  /* EXP CARDS */
+  .exp-list{display:flex;flex-direction:column;gap:3px;}
+  .exp-card{display:grid;grid-template-columns:400px 1fr;min-height:280px;overflow:hidden;}
+  .exp-card:nth-child(even){grid-template-columns:1fr 400px;}
+  .exp-card:nth-child(even) .exp-img{order:2;}
+  .exp-card:nth-child(even) .exp-body{order:1;}
+  .exp-img{overflow:hidden;position:relative;}
+  .exp-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.7s ease;filter:brightness(0.85);}
+  .exp-card:hover .exp-img img{transform:scale(1.04);filter:brightness(0.7);}
+  .exp-body{background:rgba(255,255,255,0.03);padding:44px 48px;display:flex;flex-direction:column;justify-content:center;border:1px solid rgba(255,255,255,0.03);transition:background 0.3s;}
+  .exp-card:hover .exp-body{background:rgba(255,255,255,0.06);}
+  .exp-tag{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .exp-title{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:300;color:var(--cream);margin-bottom:12px;line-height:1.15;}
+  .exp-desc{font-size:0.83rem;line-height:1.8;color:#9A9080;margin-bottom:24px;}
+  .exp-meta{display:flex;gap:28px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(180,154,106,0.1);}
+  .meta-item{display:flex;flex-direction:column;gap:4px;}
+  .meta-label{font-size:0.57rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--stone);}
+  .meta-val{font-size:0.83rem;color:var(--cream);}
+  .exp-cta{font-size:0.63rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--charcoal);background:var(--gold);padding:11px 22px;display:inline-block;transition:background 0.3s;font-weight:500;align-self:flex-start;}
+  .exp-cta:hover{background:var(--gold-light);}
+
+  /* BESPOKE */
+  .bespoke{padding:100px 60px;text-align:center;border-top:1px solid rgba(180,154,106,0.1);}
+  .bespoke h2{margin-bottom:20px;}
+  .bespoke p{font-size:0.95rem;line-height:1.85;color:#9A9080;max-width:500px;margin:0 auto 44px;}
+  .btn-gold{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--charcoal);background:var(--gold);padding:16px 40px;display:inline-block;transition:background 0.3s;font-weight:500;}
+  .btn-gold:hover{background:var(--gold-light);}
+
+  footer{background:#000;padding:40px 60px;display:flex;justify-content:space-between;align-items:center;}
+  .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:0.18em;color:var(--stone);}
+  .footer-logo span{color:var(--gold);}
+  .footer-copy{font-size:0.7rem;color:#333;}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+
+  @media(max-width:900px){
+    nav{padding:20px 24px;}
+    .hero-content{padding:0 24px;}
+    .cat-nav a{padding:14px 18px;font-size:0.6rem;}
+    .section,.bespoke{padding:60px 24px;}
+    .sec-header{flex-direction:column;align-items:flex-start;gap:8px;}
+    .sec-num{display:none;}
+    .exp-card,.exp-card:nth-child(even){grid-template-columns:1fr;}
+    .exp-card:nth-child(even) .exp-img,.exp-card:nth-child(even) .exp-body{order:unset;}
+    .exp-card:nth-child(even) .exp-img{order:1;}
+    .exp-card:nth-child(even) .exp-body{order:2;}
+    .exp-img img{min-height:220px;aspect-ratio:16/9;height:auto;}
+    .exp-body{padding:28px 20px;}
+    .exp-meta{flex-wrap:wrap;gap:16px;}
+    footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Canterbury<span> Concierge</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+  <a href="index.html#contact" class="nav-cta">Enquire Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Signature Experiences</div>
+    <h1>Eight extraordinary<br>days in <em>Canterbury</em></h1>
+    <p class="hero-sub">Every experience below is run by an established operator — fully bookable, fully reliable. We handle the reservation, the transfers, and every detail in between.</p>
+  </div>
+  <div class="cat-nav">
+    <a href="#air">🚁 By Air</a>
+    <a href="#sky">🌅 Sky</a>
+    <a href="#rail">🚂 By Rail</a>
+    <a href="#wine">🍷 Wine & Dining</a>
+    <a href="#water">🌊 On the Water</a>
+    <a href="#wellness">✦ Wellness</a>
+  </div>
+</section>
+
+<!-- BY AIR -->
+<section class="section" id="air">
+  <div class="sec-header">
+    <div><div class="sec-label">🚁 By Air</div><h2>The Southern Alps,<br><em>from above</em></h2></div>
+    <div class="sec-num">02</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Aoraki Mount Cook Southern Alps" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Helicopter · Full Day</div>
+        <div class="exp-title">Aoraki / Mount Cook Scenic Flight</div>
+        <p class="exp-desc">Depart Christchurch by helicopter, soaring over the Canterbury Plains into the heart of the Southern Alps. Circle Aoraki — New Zealand's highest peak — before a snow landing on a glacial snowfield. The definitive South Island experience.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">Full day</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$2,180 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Any occasion</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/941861/pexels-photo-941861.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Sugarloaf Flockhill heli lunch dining" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Helicopter · Dining · 4 Hours</div>
+        <div class="exp-title">Sugarloaf Heli-Lunch, Flockhill</div>
+        <p class="exp-desc">Fly from Christchurch into the Southern Alps and land at Flockhill's mountain restaurant — one of New Zealand's most dramatic dining locations. Champagne on arrival, followed by a four-course lunch surrounded by alpine views that cannot be replicated anywhere else.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">4 hours</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$2,940 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Corporate, celebrations</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKY -->
+<section class="section section-alt" id="sky">
+  <div class="sec-header">
+    <div><div class="sec-label">🌅 Sky</div><h2>Canterbury Plains<br><em>at sunrise</em></h2></div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/1157859/pexels-photo-1157859.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Hot air balloon sunrise Canterbury" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Hot Air Balloon · Sunrise · 4–5 Hours</div>
+        <div class="exp-title">Dawn Balloon, Canterbury Plains</div>
+        <p class="exp-desc">Float silently over the patchwork Canterbury Plains as the Southern Alps turn gold at sunrise. One hour aloft in complete silence — no engine, no noise, just the world below. Champagne toast on landing included. One of the most peaceful experiences in New Zealand.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">4–5 hours total</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$455 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Couples, celebrations</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BY RAIL -->
+<section class="section" id="rail">
+  <div class="sec-header">
+    <div><div class="sec-label">🚂 By Rail</div><h2>One of the world's<br><em>great train journeys</em></h2></div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/1152707/pexels-photo-1152707.jpeg?auto=compress&cs=tinysrgb&w=800" alt="TranzAlpine scenic train Southern Alps" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">TranzAlpine · Scenic Plus · Full Day</div>
+        <div class="exp-title">TranzAlpine Scenic Plus Dining</div>
+        <p class="exp-desc">Considered one of the world's great train journeys — 223km through the heart of the Southern Alps from Christchurch to Greymouth and back. Scenic Plus upgrades you to an exclusive premium carriage with a multi-course dining experience using local Canterbury and West Coast produce, served to your seat as the mountains pass your window.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">Full day return</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$345 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">All occasions</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WINE & DINING -->
+<section class="section section-alt" id="wine">
+  <div class="sec-header">
+    <div><div class="sec-label">🍷 Wine & Dining</div><h2>Canterbury's finest,<br><em>at the table</em></h2></div>
+    <div class="sec-num">02</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/2702805/pexels-photo-2702805.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Waipara Valley wine tasting" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Wine Tour · Chauffeured · Half Day</div>
+        <div class="exp-title">Waipara Valley Private Wine Tour</div>
+        <p class="exp-desc">North Canterbury produces some of the world's most celebrated pinot noir and riesling. A private, chauffeured tour visiting three of Waipara's premier estates — exclusive tastings, a long cellar door lunch, and no need to worry about the drive home. The most relaxed afternoon in Canterbury.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">Half day</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$230 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Wine lovers, groups</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/784633/pexels-photo-784633.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Tramway restaurant evening dining Christchurch" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Dining · Christchurch · 2.5 Hours</div>
+        <div class="exp-title">Christchurch Tramway Restaurant</div>
+        <p class="exp-desc">New Zealand's only dining tramcar — a four-course dinner served as a lovingly restored 1920s tram glides through the heart of Christchurch. Locally sourced Canterbury produce, professional service, and the living city framed in your window all evening. An iconic, unforgettable experience.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">2.5 hours</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$180 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Date nights, visitors</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ON THE WATER -->
+<section class="section" id="water">
+  <div class="sec-header">
+    <div><div class="sec-label">🌊 On the Water</div><h2>Akaroa Harbour,<br><em>up close</em></h2></div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/847393/pexels-photo-847393.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Swim with dolphins Akaroa harbour" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Wildlife · Akaroa · Full Day with Transfers</div>
+        <div class="exp-title">Swim with Hector's Dolphins, Akaroa</div>
+        <p class="exp-desc">Hector's dolphins are the world's rarest — and Akaroa Harbour is one of the only places on earth you can swim with them. An intimate 3.5-hour encounter limited to just 12 swimmers. We arrange your private chauffeured transfer from Christchurch, your booking, and a long lunch in the charming French village afterwards.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">Full day with transfers</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$242 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Families, nature lovers</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WELLNESS -->
+<section class="section section-alt" id="wellness">
+  <div class="sec-header">
+    <div><div class="sec-label">✦ Wellness</div><h2>Restore and<br><em>unwind</em></h2></div>
+    <div class="sec-num">01</div>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-img">
+        <img src="https://images.pexels.com/photos/3757942/pexels-photo-3757942.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Opuke thermal pools spa Methven" />
+      </div>
+      <div class="exp-body">
+        <div class="exp-tag">Thermal Spa · Methven · Full Day</div>
+        <div class="exp-title">Ōpuke Thermal Pools & Spa, Methven</div>
+        <p class="exp-desc">Just over an hour from Christchurch, Ōpuke is one of New Zealand's most awarded wellness destinations — solar-powered thermal pools set against the Southern Alps with panoramic views of the Mt Hutt ranges. Adults-only Tranquility pools feature a swim-up bar and spa treatments. We arrange your private chauffeured transfer and handle your booking.</p>
+        <div class="exp-meta">
+          <div class="meta-item"><span class="meta-label">Duration</span><span class="meta-val">Full day with transfers</span></div>
+          <div class="meta-item"><span class="meta-label">From</span><span class="meta-val">$165 per person</span></div>
+          <div class="meta-item"><span class="meta-label">Best for</span><span class="meta-val">Relaxation, couples</span></div>
+        </div>
+        <a href="index.html#contact" class="exp-cta">Enquire to Book →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="bespoke">
+  <div class="sec-label" style="display:block;text-align:center;margin-bottom:16px;">Something Else in Mind?</div>
+  <h2>Every experience is<br><em>fully bespoke</em></h2>
+  <p>These eight are our starting point — not our limit. Tell us what you're looking for and we'll build it around you.</p>
+  <a href="index.html#contact" class="btn-gold">Start the Conversation →</a>
+</section>
+
+<footer>
+  <div class="footer-logo">Canterbury<span> Concierge</span></div>
+  <div class="footer-copy">© 2026 Canterbury Concierge Ltd. Christchurch, New Zealand.</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';}
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.exp-card').forEach((el,i) => {
+    el.style.opacity='0';el.style.transform='translateY(20px)';
+    el.style.transition=`opacity 0.6s ${i*0.1}s ease,transform 0.6s ${i*0.1}s ease`;
+    obs.observe(el);
+  });
+</script>
+</body>
+</html>
